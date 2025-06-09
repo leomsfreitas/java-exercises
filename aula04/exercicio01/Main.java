@@ -2,7 +2,6 @@ package aula04.exercicio01;
 
 public class Main {
     public static void main(String[] args) {
-        // Exemplo de uso do WordCounter
         WordCounter wc = new WordCounter();
         String texto = "java é divertido e java é poderoso";
         String palavra = "java";
