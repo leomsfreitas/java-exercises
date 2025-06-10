@@ -1,6 +1,6 @@
-package aula05.exercicio01;
+package aula06.exercicio01;
 
-public class Figure {
+public abstract class Figure {
     private final double x;
     private final double y;
 
@@ -9,7 +9,7 @@ public class Figure {
         this.y = y;
     }
 
-    public double area() { return x * y; }
+    public abstract double area();
 
     public double getX() { return x; }
 
