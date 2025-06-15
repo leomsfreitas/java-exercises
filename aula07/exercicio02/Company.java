@@ -10,9 +10,9 @@ public class Company {
         this.employees = employees;
     }
 
-    public void hire(String id, String name, String jogTitle, double salary, LocalDate dateOfEmployment)
+    public void hire(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment)
             throws EmployeeAlreadyExistsException {
-        Employee e = new Employee(id, name, jogTitle, salary, dateOfEmployment);
+        Employee e = new Employee(id, name, jobTitle, salary, dateOfEmployment);
         if (employees.contains(e)) throw new EmployeeAlreadyExistsException("Employee already hired");
         employees.add(e);
     }

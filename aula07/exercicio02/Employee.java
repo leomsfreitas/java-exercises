@@ -10,15 +10,15 @@ import java.util.Objects;
 public class Employee {
     private final String id;
     private String name;
-    private String jogTitle;
+    private String jobTitle;
     private double salary;
     private LocalDate dateOfEmployment;
     private final List<Paycheck> paychecks = new ArrayList<>();
 
-    public Employee(String id, String name, String jogTitle, double salary, LocalDate dateOfEmployment) {
+    public Employee(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment) {
         this.id = id;
         this.name = name;
-        this.jogTitle = jogTitle;
+        this.jobTitle = jobTitle;
         this.salary = salary;
         this.dateOfEmployment = dateOfEmployment;
     }
@@ -53,11 +53,11 @@ public class Employee {
     }
 
     public String getJobTitle() {
-        return jogTitle;
+        return jobTitle;
     }
 
-    public void setJogTitle(String jogTitle) {
-        this.jogTitle = jogTitle;
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
     }
 
     public double getSalary() {
@@ -92,6 +92,6 @@ public class Employee {
     @Override
     public String toString() {
         return "id: %s | name: %s | jobTitle: %s | salary: %s | dateOfEmployment: %s"
-                .formatted(id, name, jogTitle, salary, dateOfEmployment);
+                .formatted(id, name, jobTitle, salary, dateOfEmployment);
     }
 }
