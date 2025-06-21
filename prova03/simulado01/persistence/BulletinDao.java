@@ -1,4 +1,4 @@
-package prova03.simulado.persistence;
+package prova03.simulado01.persistence;
 
 import java.sql.SQLException;
 import java.util.List;

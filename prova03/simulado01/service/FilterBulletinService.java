@@ -1,8 +1,8 @@
-package prova03.simulado.service;
+package prova03.simulado01.service;
 
-import prova03.simulado.model.Bulletin;
-import prova03.simulado.model.State;
-import prova03.simulado.persistence.BulletinDao;
+import prova03.simulado01.model.Bulletin;
+import prova03.simulado01.model.State;
+import prova03.simulado01.persistence.BulletinDao;
 
 import java.time.LocalDate;
 import java.util.List;

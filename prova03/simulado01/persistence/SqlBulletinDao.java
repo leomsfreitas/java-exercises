@@ -1,6 +1,6 @@
-package prova03.simulado.persistence;
+package prova03.simulado01.persistence;
 
-import prova03.simulado.model.Bulletin;
+import prova03.simulado01.model.Bulletin;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -81,7 +81,7 @@ public class SqlBulletinDao implements BulletinDao<Bulletin, Integer> {
                 Bulletin b = new Bulletin(
                         rs.getInt("id"),
                         rs.getString("city"),
-                        prova03.simulado.model.State.fromName(rs.getString("state")),
+                        prova03.simulado01.model.State.fromName(rs.getString("state")),
                         rs.getInt("infected"),
                         rs.getInt("deaths"),
                         rs.getDouble("icu_ratio"),

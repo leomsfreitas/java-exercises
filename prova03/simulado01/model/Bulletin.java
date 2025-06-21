@@ -1,4 +1,4 @@
-package prova03.simulado.model;
+package prova03.simulado01.model;
 
 import java.time.LocalDate;
 import java.util.Objects;

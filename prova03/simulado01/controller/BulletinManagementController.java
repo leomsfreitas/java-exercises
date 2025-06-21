@@ -1,7 +1,7 @@
-package prova03.simulado.controller;
+package prova03.simulado01.controller;
 
-import prova03.simulado.model.Bulletin;
-import prova03.simulado.model.State;
+import prova03.simulado01.model.Bulletin;
+import prova03.simulado01.model.State;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
