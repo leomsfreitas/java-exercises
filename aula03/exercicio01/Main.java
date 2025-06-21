@@ -8,12 +8,10 @@ public class Main {
 
         System.out.println("Cartas restantes no baralho: " + deck.remainingCards());
 
-        // Comprar uma carta
         Card carta = deck.drawCard();
         carta.setFaceUp(true);
         System.out.println("Carta comprada: " + carta);
 
-        // Comprar várias cartas
         List<Card> cartas = deck.drawCards(3);
         System.out.println("Cartas compradas:");
         for (Card c : cartas) {

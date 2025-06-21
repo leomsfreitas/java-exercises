@@ -4,7 +4,6 @@ public class NamingConventions {
     private NamingConventions() {
     }
 
-    // camelCase, PascalCase, UPPER_SNAKE_CASE
     public static boolean isFollowingConvention(String str, Convention convention) {
         switch (convention) {
             case CLASS -> {
@@ -30,7 +29,6 @@ public class NamingConventions {
         }
     }
 
-    // UPPER_SNAKE_CASE -> camelCase
     public static String fromConstToVariable(String str){
         if (str == null) return null;
 
@@ -44,7 +42,6 @@ public class NamingConventions {
         return sb.toString();
     }
 
-    // camelCase -> UPPER_SNAKE_CASE
     public static String fromVariableToConst(String str) {
         if (str == null) return null;
 
@@ -56,7 +53,6 @@ public class NamingConventions {
         return sb.toString();
     }
 
-    // Pode ser Letra, Dígito, _ ou $
     public static boolean isValidJavaIdentifier(String str) {
         if (str == null) return false;
 

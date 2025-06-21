@@ -38,7 +38,6 @@ public class Employee {
         this.birthDate = birthDate;
     }
 
-    // Novo método para calcular anos de serviço
     public int getYearsOfService() {
         return Period.between(dateOfEmployment, LocalDate.now()).getYears();
     }

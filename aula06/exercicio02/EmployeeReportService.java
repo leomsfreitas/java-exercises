@@ -9,7 +9,6 @@ public class EmployeeReportService {
         this.formatter = formatter;
     }
 
-    // High-level business logic depends only on abstractions (interfaces), not on concrete implementations
     public void createReport(Employee[] employees, String destination) {
         final String formatted = formatter.format(employees);
         exporter.export(formatted, destination);
