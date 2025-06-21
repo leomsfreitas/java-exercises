@@ -1,7 +1,9 @@
 package prova03.prova.persistence;
 
+import prova03.prova.customer.Customer;
 import prova03.prova.customer.CustomerDAO;
 import prova03.prova.customer.CustomerDTO;
+import prova03.prova.customer.VehicleType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,6 +44,21 @@ public class CustomerDaoImpl implements CustomerDAO {
         }
 
         return Optional.empty();
+    }
+
+    @Override
+    public Customer findByPlate(String abc1234) {
+        try {
+            Optional<CustomerDTO> customerDTO = findOne(abc1234);
+            if (customerDTO.isPresent()) {
+                CustomerDTO dto = customerDTO.get();
+                return new Customer(dto.plate(), dto.phone(), VehicleType.valueOf(dto.type()));
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar cliente por placa: " + abc1234, e);
+        }
     }
 
 }

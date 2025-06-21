@@ -1,4 +1,4 @@
-package prova02.prova.app;
+package prova02.prova;
 
 import prova02.prova.service.Urna;
 import prova02.prova.service.UrnaImpl;

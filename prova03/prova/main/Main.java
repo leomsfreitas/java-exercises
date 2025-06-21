@@ -27,7 +27,6 @@ public class Main {
         RegisterEntryService registerEntryService = new RegisterEntryService(customerDAO, ticketDAO);
 
         Customer customer1 = new Customer("ABC1234", "11999999999", VehicleType.CAR);
-
         Customer customer2 = new Customer("YZX1002", "1188888888", VehicleType.CAR);
 
         RegisterCustomerService customerService = new RegisterCustomerService(customerDAO);
