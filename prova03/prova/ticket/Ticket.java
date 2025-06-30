@@ -4,26 +4,26 @@ import prova03.prova.customer.Customer;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.UUID;
 
 public class Ticket {
     private final UUID id;
-    private final Customer customer;
-    private String plate;
-    private LocalDateTime entry;
+    private final String plate;
+    private final LocalDateTime entry;
     private LocalDateTime exit;
-    private double fee;
+    private Double fee;
 
     public Ticket(Customer customer) {
-        this.customer = customer;
         this.id = UUID.randomUUID();
+        this.plate = customer.getPlate();
         this.entry = LocalDateTime.now();
     }
 
-    public Ticket(Customer customer, UUID id, LocalDateTime entry) {
-        this.customer = customer;
+    public Ticket(UUID id, Customer customer, LocalDateTime entry) {
         this.id = id;
+        this.plate = customer.getPlate();
         this.entry = entry;
     }
 
@@ -32,34 +32,19 @@ public class Ticket {
     }
 
     public long parkingDuration() {
-        return exit == null
-                ? Duration.between(entry, LocalDateTime.now()).toHours()
-                : Duration.between(entry, exit).toHours();
+        return Duration.between(entry, exit).toHours();
     }
-
 
     public UUID getId() {
         return id;
-    }
-
-    public Customer getCustomer() {
-        return customer;
     }
 
     public String getPlate() {
         return plate;
     }
 
-    public void setPlate(String plate) {
-        this.plate = plate;
-    }
-
     public LocalDateTime getEntry() {
         return entry;
-    }
-
-    public void setEntry(LocalDateTime entry) {
-        this.entry = entry;
     }
 
     public LocalDateTime getExit() {
@@ -70,16 +55,17 @@ public class Ticket {
         this.exit = exit;
     }
 
-    public double getFee() {
+    public Double getFee() {
         return fee;
     }
 
-    public void setFee(double fee) {
+    public void setFee(Double fee) {
         this.fee = fee;
     }
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ticket ticket = (Ticket) o;
         return Objects.equals(id, ticket.id);
@@ -92,13 +78,11 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                "id=" + id +
-                ", customer=" + customer +
-                ", plate='" + plate + '\'' +
-                ", entry=" + entry +
-                ", exit=" + exit +
-                ", fee=" + fee +
-                '}';
+        return String.format("%s | %s | %s | %s | %.2f",
+                id.toString(),
+                plate,
+                entry.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
+                exit.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
+                fee);
     }
 }

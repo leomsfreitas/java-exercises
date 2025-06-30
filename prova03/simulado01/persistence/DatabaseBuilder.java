@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class DatabaseBuilder {
 
-    public static void main(String[] args) throws SQLException, IOException {
+    void main() throws SQLException, IOException {
         dropDatabaseIfExists();
         createTable();
         populate();

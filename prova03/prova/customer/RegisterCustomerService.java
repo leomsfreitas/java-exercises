@@ -1,26 +1,27 @@
 package prova03.prova.customer;
 
 import prova03.prova.persistence.EntityAlreadyExistsException;
+import prova03.prova.utils.StringUtils;
 
 import java.sql.SQLException;
-import java.util.Optional;
+import java.util.Objects;
 
 public class RegisterCustomerService {
-    private final CustomerDAO customerDAO;
+    private final CustomerDao customerDao;
 
-    public RegisterCustomerService(CustomerDAO customerDAO) {
-        this.customerDAO = customerDAO;
+    public RegisterCustomerService(CustomerDao customerDao) {
+        this.customerDao = customerDao;
     }
 
     public void register(String plate, String phone, VehicleType type) throws SQLException {
-        if (plate == null) throw new IllegalArgumentException("Plate must not be null.");
+        StringUtils.validateString(plate);
+        StringUtils.validateString(phone);
+        Objects.requireNonNull(type, "Type must not be null");
 
-        String normalizedPlate = plate.trim().toUpperCase();
+        if (customerDao.findOne(plate).isPresent())
+            throw new EntityAlreadyExistsException("Customer already exists");
 
-        Optional<CustomerDTO> optionalCustomer = customerDAO.findOne(normalizedPlate);
-        if (optionalCustomer.isPresent())
-            throw new EntityAlreadyExistsException("Customer already exists!");
-
-        customerDAO.save(new CustomerDTO(normalizedPlate, phone, type.name()));
+        customerDao.save(new CustomerDto(phone, phone, type.toString()));
     }
+
 }

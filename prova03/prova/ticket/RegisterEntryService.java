@@ -1,42 +1,31 @@
 package prova03.prova.ticket;
 
 import prova03.prova.customer.Customer;
-import prova03.prova.customer.CustomerDAO;
-import prova03.prova.customer.CustomerDTO;
-import prova03.prova.customer.VehicleType;
-
+import prova03.prova.customer.CustomerDao;
+import prova03.prova.customer.CustomerDto;
+import prova03.prova.utils.MapCustomer;
+import prova03.prova.utils.MapTicket;
+import prova03.prova.utils.StringUtils;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 public class RegisterEntryService {
-    private final CustomerDAO customerDAO;
-    private final TicketDAO ticketDAO;
+    private final CustomerDao customerDao;
+    private final TicketDao ticketDao;
 
-    public RegisterEntryService(CustomerDAO customerDAO, TicketDAO ticketDAO) {
-        this.customerDAO = customerDAO;
-        this.ticketDAO = ticketDAO;
+    public RegisterEntryService(CustomerDao customerDao, TicketDao ticketDao) {
+        this.customerDao = customerDao;
+        this.ticketDao = ticketDao;
     }
 
     public void register(String plate) throws SQLException {
-        if (plate == null) throw new IllegalArgumentException("Plate don't be NULL");
+        StringUtils.validateString(plate);
 
-        CustomerDTO optionalCustomerDTO = customerDAO.findOne(plate).orElseThrow();
+        CustomerDto customerDto = customerDao.findOne(plate).orElseThrow();
 
-        Customer customer = new Customer(plate, optionalCustomerDTO.phone(), VehicleType.valueOf(optionalCustomerDTO.type()));
+        Customer customer = MapCustomer.fromDto(customerDto);
         Ticket ticket = new Ticket(customer);
 
-        ticketDAO.save(new EntryTicketDTO(
-                uuidToString(ticket.getId()),
-                ticket.getPlate(),
-                dateToString(ticket.getEntry())));
-    }
-
-    private String uuidToString(UUID id) {
-        return id.toString();
-    }
-    private String dateToString(LocalDateTime dateTime) {
-        return dateTime.toString();
+        ticketDao.save(MapTicket.toEntryTicketDto(ticket));
     }
 
 }

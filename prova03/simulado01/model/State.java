@@ -45,5 +45,4 @@ public enum State {
     public static State fromName(String name) {
         return Arrays.stream(values()).filter(value -> value.name.equals(name)).findAny().orElseThrow();
     }
-
 }

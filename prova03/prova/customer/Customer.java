@@ -39,6 +39,7 @@ public class Customer {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
         return Objects.equals(plate, customer.plate);
@@ -51,10 +52,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "plate='" + plate + '\'' +
-                ", phone='" + phone + '\'' +
-                ", type=" + type +
-                '}';
+        return String.format("%s | %s | %s", plate, phone, type.toString());
     }
 }

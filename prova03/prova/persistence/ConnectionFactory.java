@@ -8,7 +8,8 @@ import java.sql.SQLException;
 public class ConnectionFactory {
     private static Connection conn;
 
-    private ConnectionFactory() {}
+    private ConnectionFactory() {
+    }
 
     public static Connection getConnection() throws SQLException {
         if (conn == null) conn = DriverManager.getConnection("jdbc:sqlite:database.db");

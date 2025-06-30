@@ -11,7 +11,7 @@ import java.util.Objects;
 public class MainView extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        final Pane graph = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main_view.fxml")));
+        final Pane graph = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("prova03/resources/view/bulletin_management.fxml")));
         Scene scene = new Scene(graph, 700, 600);
         stage.setScene(scene);
         stage.setTitle("Employee Commission Manager - BES/ECM 2024");
